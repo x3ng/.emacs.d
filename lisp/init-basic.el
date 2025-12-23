@@ -1,11 +1,10 @@
-(require 'package)
 (setq package-archives '(("gnu"     . "https://elpa.gnu.org/packages/")
                          ("melpa"   . "https://melpa.org/packages/")
-                         ("nongnu"  . "https://elpa.nongnu.org/nongnu/"))) 
+                         ("nongnu"  . "https://elpa.nongnu.org/nongnu/")))
 (package-initialize)
 
-(eval-when-compile
-  (require 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t)
 
 ;;; native config
 (when (display-graphic-p) (toggle-scroll-bar -1))
