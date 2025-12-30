@@ -15,6 +15,8 @@
 ;;; ehance code experience
 (require 'init-program)
 
+(require 'init-latex)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
