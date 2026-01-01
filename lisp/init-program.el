@@ -1,24 +1,9 @@
 ;;; toggle
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
-(use-package company
-  :ensure t
-  :init (global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 3)
-  (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.5)
-  (setq company-show-numbers t)
-  (setq company-selection-wrap-around t)
-  (setq company-transformers '(company-sort-by-occurrence)))
-
-(use-package company-box
-  :ensure t
-  :if window-system
-  :hook (company-mode . company-box-mode))
-
 (use-package lsp-mode
   :ensure t
+  :defer t
   :init
   (setq lsp-keymap-prefix "C-c l"
 	lsp-file-watch-threshold 500)
@@ -33,10 +18,12 @@
 
 (use-package flycheck
   :ensure t
+  :defer t
   :after lsp-mode)
 
 (use-package lsp-ui
   :ensure t
+  :defer t
   :hook (lsp-mode . lsp-ui-mode)
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)

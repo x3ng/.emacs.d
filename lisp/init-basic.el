@@ -77,4 +77,21 @@
   :ensure t
   :init (which-key-mode))
 
+;;; commpany all
+(use-package company
+  :ensure t
+  :init (global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 3)
+  (setq company-tooltip-align-annotations t)
+  (setq company-idle-delay 0.5)
+  (setq company-show-numbers t)
+  (setq company-selection-wrap-around t)
+  (setq company-transformers '(company-sort-by-occurrence)))
+
+(use-package company-box
+  :ensure t
+  :if window-system
+  :hook (company-mode . company-box-mode))
+
 (provide 'init-basic)
