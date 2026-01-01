@@ -77,21 +77,24 @@
   :ensure t
   :init (which-key-mode))
 
-;;; commpany all
-(use-package company
+;;; completion all
+(use-package corfu
   :ensure t
-  :init (global-company-mode)
+  :init (global-corfu-mode 1)
   :config
-  (setq company-minimum-prefix-length 3)
-  (setq company-tooltip-align-annotations t)
-  (setq company-idle-delay 0.5)
-  (setq company-show-numbers t)
-  (setq company-selection-wrap-around t)
-  (setq company-transformers '(company-sort-by-occurrence)))
-
-(use-package company-box
-  :ensure t
-  :if window-system
-  :hook (company-mode . company-box-mode))
+  (setq corfu-min-prefix-length 3)
+  (setq corfu-auto-delay 0.5)
+  (setq corfu-cycle t)
+  (setq corfu-align-to-window t)
+  (setq completion-category-overrides '((file (styles . (partial-completion)))))
+  (setq corfu-popupinfo-delay '(0.5 . 0.2))
+  (setq corfu-preview-current nil)
+  (setq corfu-auto t)
+  (setq corfu-quit-at-boundary nil)
+  (setq corfu-quit-no-match t)
+  (when window-system
+    (setq corfu-popupinfo-mode 1)
+    (setq corfu-bar-width 4)
+    (setq corfu-popup-max-height 20)))
 
 (provide 'init-basic)
