@@ -77,24 +77,22 @@
   :ensure t
   :init (which-key-mode))
 
-;;; completion all
+;;; corfu completion
 (use-package corfu
   :ensure t
-  :init (global-corfu-mode 1)
+  :init (global-corfu-mode)
+  :custom
+  (corfu-min-prefix-length 2)
+  (corfu-auto-delay 0.5)
+  (corfu-cycle t)
+  (corfu-align-to-window t)
+  (corfu-popupinfo-delay '(0.5 . 0.2))
+  (corfu-preview-current nil)
+  (corfu-auto t)
+  (corfu-quit-no-match t)
+  (corfu-use-overlays nil)
   :config
-  (setq corfu-min-prefix-length 3)
-  (setq corfu-auto-delay 0.5)
-  (setq corfu-cycle t)
-  (setq corfu-align-to-window t)
-  (setq completion-category-overrides '((file (styles . (partial-completion)))))
-  (setq corfu-popupinfo-delay '(0.5 . 0.2))
-  (setq corfu-preview-current nil)
-  (setq corfu-auto t)
-  (setq corfu-quit-at-boundary nil)
-  (setq corfu-quit-no-match t)
-  (when window-system
-    (setq corfu-popupinfo-mode 1)
-    (setq corfu-bar-width 4)
-    (setq corfu-popup-max-height 20)))
+  (corfu-history-mode 1)
+  (corfu-popupinfo-mode))
 
 (provide 'init-basic)
