@@ -10,8 +10,7 @@
   :defer t
   :after lsp-mode
   :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp-deferred))))
+                         (require 'lsp-pyright))))
 
 (use-package pyvenv
   :ensure t
@@ -21,9 +20,9 @@
   (setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
   (add-hook 'pyvenv-post-activate-hooks
             (lambda ()
-              (pyvenv-restart-python)
-              (message "Python env switched. Run `M-x lsp-restart-workspace` if using pylsp."))))
-(with-eval-after-load 'python-mode
-  (define-key python-mode-map (kbd "C-c v") #'pyvenv-workon))
+              (pyvenv-restart-python)))
+  :bind
+  (:map python-mode-map
+        ("C-c v" . pyvenv-workon)))
 
 (provide 'init-python)
