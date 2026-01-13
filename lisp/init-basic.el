@@ -1,24 +1,37 @@
-(setq package-archives '(("gnu"     . "https://elpa.gnu.org/packages/")
-                         ("melpa"   . "https://melpa.org/packages/")
-                         ("nongnu"  . "https://elpa.nongnu.org/nongnu/")))
-(package-initialize)
-
-(require 'use-package)
+;;; use-package
+(require 'use-package nil t)
 (setq use-package-always-ensure t)
 
-;;; native config
-(when (display-graphic-p) (toggle-scroll-bar -1))
+;;; benchmark
+(use-package benchmark-init
+  :ensure t
+  :demand t
+  :config
+  (benchmark-init/activate)
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+(setq column-number-mode t)
+(setq confirm-kill-emacs 'yes-or-no-p)
+(setq display-line-numbers-type 'visual)
+(setq indent-tabs-mode nil)
+(setq inhibit-startup-screen t)
+(setq make-backup-files nil)
+(setq package-selected-packages nil)  
+
 (global-display-line-numbers-mode 1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
 (global-auto-revert-mode t)
-
 (electric-pair-mode t)
 (delete-selection-mode t)
 
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
+
+;;; disable custom-file
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el.disabled"))
+(setq custom-safe-themes t)
+(setq customize-save nil)
+(setq custom-variable-set nil)
+(setq custom-face-set nil)
 
 ;;; scale
 (use-package default-text-scale
@@ -29,7 +42,6 @@
 ;;; clipboard
 (use-package xclip
   :ensure t
-  :demand t
   :config
   (xclip-mode 1))
 

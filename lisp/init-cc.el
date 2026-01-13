@@ -2,6 +2,7 @@
 
 (use-package cc-mode
   :ensure nil
+  :defer t
   :config
   (setq c-default-style "bsd"
         c-basic-offset 4

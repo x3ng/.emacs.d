@@ -2,5 +2,6 @@
   (package-install 'dracula-theme))
 
 (load-theme 'dracula t)
+(enable-theme 'dracula)
 
 (provide 'init-theme)
