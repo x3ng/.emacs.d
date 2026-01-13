@@ -5,14 +5,15 @@
   :ensure t
   :defer t
   :init
-  (setq lsp-keymap-prefix "C-c l"
-	lsp-file-watch-threshold 500)
+  (setq lsp-keymap-prefix "C-c l")
   :hook
   (lsp-mode . lsp-enable-which-key-integration)
   :commands (lsp lsp-deferred)
+  :custom
+  (lsp-completion-provider :none)
+  (lsp-headerline-breadcrumb-enable t)
   :config
-  (setq lsp-completion-provider :none)
-  (setq lsp-headerline-breadcrumb-enable t)
+  (advice-add #'lsp-completion-at-point :around #'cape-wrap-noninterruptible)
   :bind
   ("C-c l s" . lsp-ivy-workspace-symbol))
 

@@ -77,22 +77,6 @@
   :ensure t
   :init (which-key-mode))
 
-;;; corfu completion
-(use-package corfu
-  :ensure t
-  :init (global-corfu-mode)
-  :custom
-  (corfu-min-prefix-length 2)
-  (corfu-auto-delay 0.5)
-  (corfu-cycle t)
-  (corfu-align-to-window t)
-  (corfu-popupinfo-delay '(0.5 . 0.2))
-  (corfu-preview-current nil)
-  (corfu-auto t)
-  (corfu-quit-no-match t)
-  (corfu-use-overlays nil)
-  :config
-  (corfu-history-mode 1)
-  (corfu-popupinfo-mode))
+(require 'init-completion)
 
 (provide 'init-basic)
