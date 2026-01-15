@@ -31,12 +31,4 @@
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (setq lsp-ui-doc-position 'top))
 
-;;; language config
-
-(require 'init-cc)
-
-(require 'init-python)
-
-(require 'init-verilog)
-
 (provide 'init-program)

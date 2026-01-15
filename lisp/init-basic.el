@@ -45,9 +45,6 @@
   :config
   (xclip-mode 1))
 
-;;; ivy 
-(require 'init-ivy)
-
 ;;; rainbow delimiters
 (use-package rainbow-delimiters
   :ensure t
@@ -88,7 +85,5 @@
 (use-package which-key
   :ensure t
   :init (which-key-mode))
-
-(require 'init-completion)
 
 (provide 'init-basic)
