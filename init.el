@@ -19,6 +19,7 @@
 
 (require 'init-cc)
 (require 'init-python)
+(require 'init-haskell)
 (require 'init-jts)
 (require 'init-verilog)
 
