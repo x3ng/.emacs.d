@@ -10,10 +10,10 @@
   (benchmark-init/activate)
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
+(setq indent-tabs-mode nil)
 (setq column-number-mode t)
 (setq confirm-kill-emacs 'yes-or-no-p)
 (setq display-line-numbers-type 'visual)
-(setq indent-tabs-mode nil)
 (setq inhibit-startup-screen t)
 (setq make-backup-files nil)
 (setq package-selected-packages nil)  

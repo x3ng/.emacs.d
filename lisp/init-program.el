@@ -1,6 +1,11 @@
 ;;; toggle
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
+(use-package flycheck
+  :ensure t
+  :defer t
+  :after lsp-mode)
+
 (use-package lsp-mode
   :ensure t
   :defer t
@@ -12,15 +17,11 @@
   :custom
   (lsp-completion-provider :none)
   (lsp-headerline-breadcrumb-enable t)
+  (lsp-enable-on-type-formatting nil)
   :config
   (advice-add #'lsp-completion-at-point :around #'cape-wrap-noninterruptible)
   :bind
   ("C-c l s" . lsp-ivy-workspace-symbol))
-
-(use-package flycheck
-  :ensure t
-  :defer t
-  :after lsp-mode)
 
 (use-package lsp-ui
   :ensure t
