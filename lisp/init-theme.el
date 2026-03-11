@@ -1,7 +1,13 @@
-(unless (package-installed-p 'dracula-theme)
-  (package-install 'dracula-theme))
+;; lisp/init-theme.el
+(defvar my-theme-name 'dracula "The theme to load.")
+(defvar my-theme-package-list '(dracula-theme gruvbox-theme monokai-theme))
 
-(load-theme 'dracula t)
-(enable-theme 'dracula)
+(defvar my--theme-loaded nil "Whether the theme was successfully loaded.")
+
+(defun my/load-theme ()
+  (unless my--theme-loaded
+    (if (ignore-errors (load-theme my-theme-name t))
+	(setq my--theme-loaded t)
+      (message "theme %s not ready yet." my-theme-name))))
 
 (provide 'init-theme)
