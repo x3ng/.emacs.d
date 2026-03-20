@@ -6,16 +6,10 @@
   :custom
   (eglot-autoshutdown t)
   (eglot-events-buffer-size 0)
+  (eglot-ignored-server-capabilities '(:documentOnTypeFormattingProvider))
   :config
-  (setq eglot-server-programs
-        (append
-         '((python-ts-mode . ("pyright-langserver" "--stdio"))
-           (rust-ts-mode . ("rust-analyzer"))
-           (c-ts-mode . ("clangd"))
-           (c++-ts-mode . ("clangd"))
-           (go-ts-mode . ("gopls"))
-           (typescript-ts-mode . ("typescript-language-server" "--stdio")))
-         eglot-server-programs))
+  (defun my-eglot-register-server (mode server)
+    (add-to-list 'eglot-server-programs (cons mode server)))
 
   (setq my-lsp-reconnect-function
         (lambda ()
