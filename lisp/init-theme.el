@@ -1,6 +1,6 @@
 ;; lisp/init-theme.el
-(defvar my-theme-name 'dracula "The theme to load.")
-(defvar my-theme-package-list '(dracula-theme gruvbox-theme monokai-theme))
+(defvar my-theme-name 'catppuccin "The theme to load.")
+(defvar my-theme-package-list '(catppuccin-theme dracula-theme gruvbox-theme monokai-theme))
 
 (defvar my--theme-loaded nil "Whether the theme was successfully loaded.")
 
