@@ -1,35 +1,23 @@
-;;; toggle
-(add-hook 'prog-mode-hook #'hs-minor-mode)
+;;; init-program.el
 
-(use-package flycheck
-  :ensure t
-  :defer t
-  :after lsp-mode)
+(defvar my-lsp-reconnect-function nil)
 
-(use-package lsp-mode
+(defun my-lsp-on-env-change ()
+  (when my-lsp-reconnect-function
+    (funcall my-lsp-reconnect-function)))
+
+(use-package treesit-auto
   :ensure t
-  :defer t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration)
-  :commands (lsp lsp-deferred)
   :custom
-  (lsp-completion-provider :none)
-  (lsp-headerline-breadcrumb-enable t)
-  (lsp-enable-on-type-formatting nil)
+  (treesit-auto-install 'prompt)
   :config
-  (advice-add #'lsp-completion-at-point :around #'cape-wrap-noninterruptible)
-  :bind
-  ("C-c l s" . lsp-ivy-workspace-symbol))
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
-(use-package lsp-ui
-  :ensure t
-  :defer t
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (setq lsp-ui-doc-position 'top))
+(require 'init-eglot)
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (setq-local show-trailing-whitespace t)))
 
 (provide 'init-program)
