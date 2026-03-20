@@ -1,14 +1,14 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-package)
-(my/initialize-package)
+(my-initialize-package)
 
 (require 'init-theme)
-(my/load-theme)
+(my-load-theme)
 (make-frame-visible (selected-frame))
 (setq inhibit-redisplay nil)
 (setq inhibit-message nil)
 (redisplay)
-(my/install-packages my-theme-package-list)
+(my-install-packages my-theme-package-list)
 
 ;;; emacs core config
 (require 'init-core)

@@ -4,7 +4,7 @@
 
 (defvar my--theme-loaded nil "Whether the theme was successfully loaded.")
 
-(defun my/load-theme ()
+(defun my-load-theme ()
   (unless my--theme-loaded
     (if (ignore-errors (load-theme my-theme-name t))
 	(setq my--theme-loaded t)
