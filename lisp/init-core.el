@@ -14,7 +14,9 @@
 (setq confirm-kill-emacs 'yes-or-no-p)
 (setq display-line-numbers-type 'visual)
 (setq inhibit-startup-screen t)
+
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 (global-display-line-numbers-mode 1)
 (global-auto-revert-mode t)
@@ -27,8 +29,5 @@
 ;;; disable custom-file
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el.disabled"))
 (setq custom-safe-themes t)
-(setq customize-save nil)
-(setq custom-variable-set nil)
-(setq custom-face-set nil)
 
 (provide 'init-core)
