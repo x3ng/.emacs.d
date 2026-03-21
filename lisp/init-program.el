@@ -2,6 +2,12 @@
 
 (defvar my-lsp-reconnect-function nil)
 
+;;; register lsp server
+(defvar my-lsp-server-alist nil)
+
+(defun my-lsp-register-server (mode server)
+  (add-to-list 'my-lsp-server-alist (cons mode server)))
+
 (defun my-lsp-on-env-change ()
   (when my-lsp-reconnect-function
     (funcall my-lsp-reconnect-function)))

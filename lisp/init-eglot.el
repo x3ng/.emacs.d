@@ -8,8 +8,8 @@
   (eglot-events-buffer-size 0)
   (eglot-ignored-server-capabilities '(:documentOnTypeFormattingProvider))
   :config
-  (defun my-eglot-register-server (mode server)
-    (add-to-list 'eglot-server-programs (cons mode server)))
+  (dolist (entry my-lsp-server-alist)
+    (add-to-list 'eglot-server-programs entry))
 
   (setq my-lsp-reconnect-function
         (lambda ()

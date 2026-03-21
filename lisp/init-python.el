@@ -26,10 +26,8 @@
   (add-hook 'pyvenv-post-activate-hooks #'my-pyvenv-after-change)
   (add-hook 'pyvenv-post-deactivate-hooks #'my-pyvenv-after-change))
 
-(with-eval-after-load 'eglot
-  (my-eglot-register-server
-   'python-ts-mode
-   '("pyright-langserver" "--stdio")))
+
+(my-lsp-register-server 'python-ts-mode '("pyright-langserver" "--stdio"))
 
 (with-eval-after-load 'init-program
   (add-hook 'my-python-venv-changed-hook #'my-lsp-on-env-change))

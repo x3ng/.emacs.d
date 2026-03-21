@@ -1,18 +1,15 @@
+;;; init-haskell.el
+
+
 (use-package haskell-mode
   :ensure t
-  :defer t
-  :mode ("\\.hs\\'" . haskell-mode)
-  :hook (haskell-mode . lsp-deferred)
-  :custom
-  (lsp-haskell-formatting-provider "ormolu")
-  (haskell-process-type 'ghci)
-  (haskell-process-path-ghci "ghci"))
-
-(use-package lsp-haskell
-  :ensure t
-  :after lsp-mode
+  :hook (haskell-mode . my-haskell-setup)
   :config
-  (setq lsp-haskell-formatting-provider "ormolu")
-  (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
+  (defun my-haskell-setup ()
+    (setq-local indent-offset 4)
+    (setq-local haskell-process-type 'ghci)
+    (setq-local haskell-process-path-ghci "ghci")))
+
+(my-lsp-register-server 'haskell-mode '("haskell-language-server-wrapper" "--lsp"))
 
 (provide 'init-haskell)
