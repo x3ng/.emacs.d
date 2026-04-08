@@ -7,7 +7,9 @@
 
 (add-hook 'c-ts-base-mode-hook
           (lambda ()
-            (setq-local c-ts-mode-indent-offset 4)))
+            (setq-local c-ts-mode-indent-offset 4)
+            (setq-local indent-tabs-mode nil)
+            (setq-local tab-width 4)))
 
 (my-lsp-register-server 'c-ts-mode '("clangd" "-background-index" "-clang-tidy" "-header-insertion=never"))
 (my-lsp-register-server 'c++-ts-mode '("clangd" "-background-index" "-clang-tidy" "-header-insertion=never"))
