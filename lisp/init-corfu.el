@@ -4,7 +4,7 @@
   :ensure t
   :custom
   (corfu-auto t)
-  (corfu-auto-delay 0.2)
+  (corfu-auto-delay 0.5)
   (corfu-auto-prefix 2)
   (corfu-cycle t)
   (corfu-count 10)
