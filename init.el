@@ -26,5 +26,6 @@
 (require 'init-haskell)
 
 (require 'init-latex)
+(require 'init-markdown)
 
 (provide 'init)
