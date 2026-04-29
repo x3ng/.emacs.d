@@ -7,7 +7,7 @@
     (package-initialize)))
 
 (defun my-install-package (package-name)
-  (my/initialize-package)
+  (my-initialize-package)
   (unless (package-installed-p package-name)
     (package-install package-name)))
 
